@@ -1,4 +1,6 @@
-package elementmethods;
+package assignments;
+
+import java.util.List;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
@@ -7,7 +9,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 
-public class JavaScriptExecutorExample {
+public class Assignment18 {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
@@ -16,16 +18,15 @@ public class JavaScriptExecutorExample {
 		co.addArguments("--remote-allow-origins=*");
 		WebDriver driver = new ChromeDriver(co);
 		driver.manage().window().maximize();
-		driver.get("https://www.amazon.in/");
-		
-		WebElement searchfield=driver.findElement(By.xpath("//input[@id='twotabsearchtextbox']"));
-		searchfield.sendKeys("Shoes");
+		driver.get("https://selenium.obsqurazone.com/check-box-demo.php");
 		JavascriptExecutor js=(JavascriptExecutor) driver;
-//		js.executeScript("alert('XXX')");
-		WebElement searchbutton=driver.findElement(By.xpath("//input[@id='nav-search-submit-button']"));
-//		js.executeScript("document.getElementById(\"nav-search-submit-button\").click()");
-		js.executeScript("arguments[0].click();",searchbutton);
-		js.executeScript("window.scrollBy(0,6000)");
+		WebElement checkbox=driver.findElement(By.xpath("//label[contains(text(),'Click on this check box')]"));
+		js.executeScript("arguments[0].click();", checkbox,1,2);
+		js.executeScript("document.getElementById(\"button-two\").click();");
+		WebElement last_text=driver.findElement(By.xpath("//p[text()='© 2021 Obsqura Testing, All Rights Reserved.']"));
+		js.executeScript("arguments[0].scrollIntoView()", last_text);
+		
+		
 	}
 
 }

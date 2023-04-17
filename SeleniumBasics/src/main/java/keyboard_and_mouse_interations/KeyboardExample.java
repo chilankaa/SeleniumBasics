@@ -21,8 +21,9 @@ public class KeyboardExample {
 		WebElement searchfield=driver.findElement(By.xpath("//input[@id='twotabsearchtextbox']"));
 //		searchfield.sendKeys("Shoes"+Keys.ENTER);
 //		searchfield.sendKeys("Shoes"+Keys.BACK_SPACE);
-		searchfield.sendKeys("BAG");
-		searchfield.sendKeys(Keys.ARROW_DOWN);
+		searchfield.sendKeys("pencil"+Keys.ARROW_DOWN);
+		searchfield.sendKeys(Keys.ENTER);
+		
 //		searchfield.sendKeys("Shoes");
 //		searchfield.sendKeys(Keys.chord(Keys.CONTROL,"A"));
 //		searchfield.sendKeys(Keys.BACK_SPACE);
