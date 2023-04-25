@@ -1,13 +1,13 @@
 package keyboard_and_mouse_interations;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.interactions.Actions;
 
-public class KeyboardExample {
+public class DragAndDropExample {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
@@ -16,15 +16,13 @@ public class KeyboardExample {
 		co.addArguments("--remote-allow-origins=*");
 		WebDriver driver = new ChromeDriver(co);
 		driver.manage().window().maximize();
-		driver.get("https://www.amazon.in/");
-		
-		WebElement searchfield=driver.findElement(By.xpath("//input[@id='twotabsearchtextbox']"));
-		searchfield.sendKeys("Shoes"+Keys.ENTER);
-		searchfield=driver.findElement(By.xpath("//input[@id='twotabsearchtextbox']"));
-		searchfield.sendKeys(Keys.BACK_SPACE);
-		searchfield.sendKeys("Bags");
-		searchfield.sendKeys(Keys.chord(Keys.CONTROL,"A"));
-		searchfield.sendKeys(Keys.BACK_SPACE);
+		driver.get("https://demo.guru99.com/test/drag_drop.html");
+		WebElement source=driver.findElement(By.xpath("(//a[@class='button button-orange'])[2]"));
+		WebElement destination=driver.findElement(By.xpath("(//li[@class='placeholder'])[2]"));
+		WebElement source1=driver.findElement(By.xpath("(//a[@class='button button-orange'])[8]"));
+		Actions actions=new Actions(driver);
+		actions.dragAndDrop(source, destination).build().perform();
+//		actions.dragAndDrop(source1, destination);
 	}
 
 }

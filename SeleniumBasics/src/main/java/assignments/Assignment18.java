@@ -19,14 +19,25 @@ public class Assignment18 {
 		WebDriver driver = new ChromeDriver(co);
 		driver.manage().window().maximize();
 		driver.get("https://selenium.obsqurazone.com/check-box-demo.php");
-		JavascriptExecutor js=(JavascriptExecutor) driver;
-		WebElement checkbox=driver.findElement(By.xpath("//label[contains(text(),'Click on this check box')]"));
-		js.executeScript("arguments[0].click();", checkbox,1,2);
-		js.executeScript("document.getElementById(\"button-two\").click();");
+		JavascriptExecutor js = (JavascriptExecutor) driver;
+		
+		//I. Use either this loop
+		
+//		WebElement checkbox = driver.findElement(By.xpath("//input[@class='form-check-input']"));
+//		WebElement checkbox1 = driver.findElement(By.id("check-box-one"));
+//		for (int i = 0; i < 2; i++) {
+//			js.executeScript("arguments["+i+"].click();", checkbox, checkbox1);
+//			checkbox = driver.findElement(By.xpath("//input[@class='form-check-input']"));
+//			checkbox1 = driver.findElement(By.id("check-box-one"));
+//		}
+		
+		//II. Or this loop
+		List<WebElement> checkboxes = driver.findElements(By.xpath("//input[@type='checkbox']"));
+		for (WebElement boxes : checkboxes) {
+			js.executeScript("arguments[0].click();", boxes);
+		}
 		WebElement last_text=driver.findElement(By.xpath("//p[text()='© 2021 Obsqura Testing, All Rights Reserved.']"));
 		js.executeScript("arguments[0].scrollIntoView()", last_text);
-		
-		
 	}
 
 }

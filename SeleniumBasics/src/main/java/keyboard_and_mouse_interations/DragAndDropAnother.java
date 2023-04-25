@@ -1,13 +1,13 @@
 package keyboard_and_mouse_interations;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.interactions.Actions;
 
-public class KeyboardExample {
+public class DragAndDropAnother {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
@@ -16,15 +16,11 @@ public class KeyboardExample {
 		co.addArguments("--remote-allow-origins=*");
 		WebDriver driver = new ChromeDriver(co);
 		driver.manage().window().maximize();
-		driver.get("https://www.amazon.in/");
-		
-		WebElement searchfield=driver.findElement(By.xpath("//input[@id='twotabsearchtextbox']"));
-		searchfield.sendKeys("Shoes"+Keys.ENTER);
-		searchfield=driver.findElement(By.xpath("//input[@id='twotabsearchtextbox']"));
-		searchfield.sendKeys(Keys.BACK_SPACE);
-		searchfield.sendKeys("Bags");
-		searchfield.sendKeys(Keys.chord(Keys.CONTROL,"A"));
-		searchfield.sendKeys(Keys.BACK_SPACE);
+		driver.get("https://the-internet.herokuapp.com/drag_and_drop");
+		WebElement A=driver.findElement(By.id("column-a"));
+		WebElement B=driver.findElement(By.id("column-b"));
+		Actions actions=new Actions(driver);
+		actions.dragAndDrop(A, B).build().perform();
 	}
 
 }

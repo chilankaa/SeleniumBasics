@@ -1,13 +1,13 @@
-package keyboard_and_mouse_interations;
+package assignments;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.support.ui.Select;
 
-public class KeyboardExample {
+public class Assignment21 {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
@@ -16,15 +16,12 @@ public class KeyboardExample {
 		co.addArguments("--remote-allow-origins=*");
 		WebDriver driver = new ChromeDriver(co);
 		driver.manage().window().maximize();
-		driver.get("https://www.amazon.in/");
-		
-		WebElement searchfield=driver.findElement(By.xpath("//input[@id='twotabsearchtextbox']"));
-		searchfield.sendKeys("Shoes"+Keys.ENTER);
-		searchfield=driver.findElement(By.xpath("//input[@id='twotabsearchtextbox']"));
-		searchfield.sendKeys(Keys.BACK_SPACE);
-		searchfield.sendKeys("Bags");
-		searchfield.sendKeys(Keys.chord(Keys.CONTROL,"A"));
-		searchfield.sendKeys(Keys.BACK_SPACE);
+		driver.get("https://selenium.obsqurazone.com/jquery-dual-list.php");
+		WebElement box=driver.findElement(By.xpath("//select[@size='15']"));
+		Select select=new Select(box);
+		select.selectByIndex(4);
+		WebElement add=driver.findElement(By.xpath("//button[@class='btn btn-sm btn-block btn-info add']"));
+		add.click();
 	}
 
 }

@@ -23,8 +23,8 @@ public class MouseBasic {
 		WebElement right_click=driver.findElement(By.xpath("//span[text()='right click me']"));
 		WebElement double_click=driver.findElement(By.xpath("//button[text()='Double-Click Me To See Alert']"));
 		Actions action=new Actions(driver);
-//		action.contextClick().build().perform();
-//		action.contextClick(right_click).build().perform();
+		action.contextClick().build().perform();
+		action.contextClick(right_click).build().perform();
 		action.doubleClick(double_click).build().perform();
 	}
 

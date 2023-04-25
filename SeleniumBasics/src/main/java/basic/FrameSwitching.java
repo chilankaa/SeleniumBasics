@@ -1,13 +1,12 @@
-package keyboard_and_mouse_interations;
+package basic;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 
-public class KeyboardExample {
+public class FrameSwitching {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
@@ -16,15 +15,17 @@ public class KeyboardExample {
 		co.addArguments("--remote-allow-origins=*");
 		WebDriver driver = new ChromeDriver(co);
 		driver.manage().window().maximize();
-		driver.get("https://www.amazon.in/");
+		driver.get("https://the-internet.herokuapp.com/nested_frames");
+		driver.switchTo().frame(0);
+		driver.switchTo().frame("frame-right");
+		WebElement right=driver.findElement(By.xpath("//body[contains(text(),'RIGHT')]"));
+		System.out.println(right.getText());
 		
-		WebElement searchfield=driver.findElement(By.xpath("//input[@id='twotabsearchtextbox']"));
-		searchfield.sendKeys("Shoes"+Keys.ENTER);
-		searchfield=driver.findElement(By.xpath("//input[@id='twotabsearchtextbox']"));
-		searchfield.sendKeys(Keys.BACK_SPACE);
-		searchfield.sendKeys("Bags");
-		searchfield.sendKeys(Keys.chord(Keys.CONTROL,"A"));
-		searchfield.sendKeys(Keys.BACK_SPACE);
+		driver.get("https://the-internet.herokuapp.com/nested_frames");
+		driver.switchTo().frame(1);
+		WebElement bottom=driver.findElement(By.xpath("//body[contains(text(),'BOTTOM')]"));
+		System.out.println(bottom.getText());
+		driver.quit();
 	}
 
 }

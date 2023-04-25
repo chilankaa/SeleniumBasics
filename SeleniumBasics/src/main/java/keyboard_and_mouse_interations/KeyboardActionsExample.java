@@ -6,8 +6,9 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.interactions.Actions;
 
-public class KeyboardExample {
+public class KeyboardActionsExample {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
@@ -19,12 +20,13 @@ public class KeyboardExample {
 		driver.get("https://www.amazon.in/");
 		
 		WebElement searchfield=driver.findElement(By.xpath("//input[@id='twotabsearchtextbox']"));
-		searchfield.sendKeys("Shoes"+Keys.ENTER);
-		searchfield=driver.findElement(By.xpath("//input[@id='twotabsearchtextbox']"));
-		searchfield.sendKeys(Keys.BACK_SPACE);
-		searchfield.sendKeys("Bags");
-		searchfield.sendKeys(Keys.chord(Keys.CONTROL,"A"));
-		searchfield.sendKeys(Keys.BACK_SPACE);
+		Actions actions=new Actions(driver);
+		actions.sendKeys(searchfield, "Pens").build().perform();
+		actions.clickAndHold(searchfield).build().perform();
+//		actions.release(searchfield).build().perform();
+		actions.keyDown(searchfield, Keys.BACK_SPACE).build().perform();
+		actions.keyUp(searchfield, Keys.BACK_SPACE).build().perform();
+//		actions.keyDown(searchfield, Keys.ENTER).build().perform();
 	}
 
 }
