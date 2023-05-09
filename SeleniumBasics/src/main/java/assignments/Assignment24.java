@@ -26,7 +26,7 @@ public class Assignment24 {
 			options.get(0).click();
 			options = driver.findElements(By.xpath("//select[@id='bootstrap-duallistbox-nonselected-list_duallistbox_demo1[]']//option"));
 		}
-		driver.quit();
+//		driver.quit();
 	}
 
 }
